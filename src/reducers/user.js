@@ -1,7 +1,7 @@
 import { ActionTypes } from '../actions';
 
 const defaultState = {
-  username: '',
+  email: '',
   isLogging: false,
 }
 
@@ -17,7 +17,7 @@ const userReducers = (state = defaultState, action) => {
     case ActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,
-        username: action.username,
+        email: action.email,
         isLogging: false,
       }
     }

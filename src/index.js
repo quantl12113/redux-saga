@@ -7,18 +7,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import allReducers from './reducers';
+import History from './history';
+import { routerMiddleware } from 'react-router-redux';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
+
+const middleware = applyMiddleware(
+  routerMiddleware(History),
+  sagaMiddleware
+);
+
+const store = createStore(allReducers, middleware);
 sagaMiddleware.run(rootSaga);
 console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <App history={History} />
   </Provider>,
   document.getElementById('root')
 );
