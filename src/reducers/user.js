@@ -30,6 +30,36 @@ const userReducers = (state = defaultState, action) => {
       }
     }
 
+    case ActionTypes.REGISTER: {
+      return {
+        ...state,
+        isRegister: true,
+      }
+    }
+
+    case ActionTypes.REGISTER_SUCCESS: {
+      return {
+        ...state,
+        registerEmail: action.email,
+        isREgister: false,
+      }
+    }
+
+    case ActionTypes.REGISTER_FAIL: {
+      return {
+        ...state,
+        errors: action.errors,
+        isREgister: false,
+      }
+    }
+
+    case ActionTypes.LOGOUT: {
+      return {
+        ...state,
+        email: action.email
+      }
+    }
+
     default:
       return state;
   }

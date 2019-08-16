@@ -6,12 +6,13 @@ export const loginAction = ({ email, password }) => ({
   password,
 });
 
-export const loginSuccessAction = ({ email }) => ({
-  type: ActionTypes.LOGIN_SUCCESS,
+export const registerAction = ({ email, password, username }) => ({
+  type: ActionTypes.REGISTER,
   email,
+  password,
+  username
 });
 
-export const loginFailAction = ({ errors }) => ({
-  type: ActionTypes.LOGIN_FAIL,
-  errors,
-})
+export const logOutAction = () => ({
+  type: ActionTypes.LOGOUT,
+});

@@ -7,7 +7,6 @@ import Home from './home'
 
 const App = props => {
   const { history } = props;
-  console.log(history)
   return (
     <Router history={history}>
       <Switch>

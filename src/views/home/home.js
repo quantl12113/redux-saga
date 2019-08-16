@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+import ListItem from '../../components/list-item'
 
 export default class Home extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  onLogout() {
+    const { logout } = this.props;
+    logout();
+  }
+
+  componentDidMount() {
+    const { loadData } = this.props;
+    loadData();
   }
 
   render() {
-    const { email } = this.props;
+    const { email, data, } = this.props;
+    if (!email) {
+      return <Redirect to='/login' />
+    }
+
     return (
       <div className="container">
         <h1>Home</h1><br />
         <h1>Email: {email}</h1><br />
-        <Button type="submit" >Signout</Button>
+        <ListItem data={data} />
+        <Button type="submit" onClick={this.onLogout}>Signout</Button>
       </div>
     )
   }
