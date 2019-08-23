@@ -28,6 +28,7 @@ export default class Home extends React.Component {
     return (
       <div className="container">
         <h1>Home</h1><br />
+        https://github.com/quantl12113/redux-saga.githttps://github.com/quantl12113/redux-saga.git
         <h1>Email: {email}</h1><br />
         <ListItem data={data} />
         <Button type="submit" onClick={this.onLogout}>Signout</Button>
